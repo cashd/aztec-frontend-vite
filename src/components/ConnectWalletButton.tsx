@@ -1,6 +1,7 @@
 import { InjectedConnector, Signer } from "@wagmi/core";
 import { useCreateAztec } from "aztec/hooks/useCreateAztec.js";
-import { useAccount, useConnect, useSigner } from "wagmi";
+import { formatAddress } from "utils/index.js";
+import { useAccount, useConnect } from "wagmi";
 
 interface ConnectWalletButtonProps {
   disabled?: boolean;
@@ -11,8 +12,6 @@ export function ConnectWalletButton({}: ConnectWalletButtonProps) {
     connector: new InjectedConnector(),
     onSuccess: () => {},
   });
-
-  const { data: signer } = useSigner();
 
   const { mutate: createAztecSDK } = useCreateAztec();
 
@@ -29,20 +28,13 @@ export function ConnectWalletButton({}: ConnectWalletButtonProps) {
     },
   });
 
-  if (isConnected) {
-    return (
-      <button className="btn p-2 font-bold">
-        Wallet connected at: {address}
-      </button>
-    );
-  }
-
   return (
     <button
       className="delay-20 btn p-2 font-bold transition ease-in-out hover:scale-105 hover:shadow-lg"
       onClick={() => connect()}
+      disabled={isConnected}
     >
-      Connect Wallet
+      {address ? formatAddress(address) : "Connect Wallet"}
     </button>
   );
 }
