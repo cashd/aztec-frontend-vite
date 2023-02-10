@@ -3,18 +3,18 @@ import { ConnectWalletButton } from "components/ConnectWalletButton.js";
 import { ReactElement } from "react";
 import { useSigner } from "wagmi";
 
-export function Home(): ReactElement {
+export function Index(): ReactElement {
   const { mutate: bridgeEth } = useBridgeEth();
   const { data: signer } = useSigner();
 
   return (
     <div className="h-screen">
       <div className="m-auto flex max-w-lg flex-col gap-y-6 pt-36">
-        <h1 className="text-4xl font-bold">zkElement</h1>
+        <h1 className="text-4xl font-bold">Aztec Vite Project</h1>
         <ConnectWalletButton />
 
         <button
-          className="btn"
+          className="btn p-2 font-bold"
           onClick={async () => {
             if (signer) {
               bridgeEth({

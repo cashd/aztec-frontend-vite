@@ -5,9 +5,9 @@ import { publicProvider } from "wagmi/providers/public";
 
 const RPC_KEY = import.meta.env.VITE_RPC_KEY;
 
-if (!RPC_KEY) {
-  throw new Error("Provide an RPC_KEY variable in .env");
-}
+// if (!RPC_KEY) {
+//   throw new Error("Provide an RPC_KEY variable in .env");
+// }
 
 const { provider, webSocketProvider } = configureChains(
   [mainnet, localhost],

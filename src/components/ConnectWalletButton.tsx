@@ -31,7 +31,7 @@ export function ConnectWalletButton({}: ConnectWalletButtonProps) {
 
   if (isConnected) {
     return (
-      <button className="btn  bg-black p-2 font-bold text-white">
+      <button className="btn p-2 font-bold">
         Wallet connected at: {address}
       </button>
     );
@@ -39,7 +39,7 @@ export function ConnectWalletButton({}: ConnectWalletButtonProps) {
 
   return (
     <button
-      className="delay-50  bg-black p-2 font-bold text-white transition ease-in-out hover:scale-105 hover:shadow-lg"
+      className="delay-20 btn p-2 font-bold transition ease-in-out hover:scale-105 hover:shadow-lg"
       onClick={() => connect()}
     >
       Connect Wallet
