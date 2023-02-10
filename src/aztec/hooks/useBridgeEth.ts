@@ -2,12 +2,11 @@ import { EthAddress, TxSettlementTime } from "@aztec/sdk";
 import { useMutation } from "@tanstack/react-query";
 import { depositEthToAztec } from "aztec/utils.js";
 import { ERROR_SDK_NOT_INIT } from "errors.js";
-import { Signer } from "ethers";
-import { parseEther } from "ethers/lib/utils.js";
+import { BigNumber, Signer } from "ethers";
 import { useAztec } from "./useAztec.js";
 
 interface useBridgeEthArgs {
-  amount: string;
+  amount: BigNumber;
   signer: Signer;
 }
 
@@ -20,7 +19,7 @@ export function useBridgeEth() {
     }
 
     // parse string with 18 decimals
-    const depositTokenQuantity = parseEther(amount).toBigInt();
+    const depositTokenQuantity = amount.toBigInt();
 
     // await sdk sync
     await aztecSDK.awaitUserSynchronised(accountPublicKey);

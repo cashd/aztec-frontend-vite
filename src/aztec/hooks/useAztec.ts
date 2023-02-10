@@ -3,6 +3,5 @@ import { useContext } from "react";
 
 export function useAztec() {
   const aztecContext = useContext(AztecContext);
-
   return aztecContext;
 }
